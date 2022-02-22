@@ -7,12 +7,16 @@ mat-card {
   text-align: center;
 }
 
-mat-form-field {
+mat-form-field, mat-radio-group {
   display: block;
   font-size: 20px;
 }
 
-mat-form-field.ng-invalid.ng-touched {
+mat-radio-group {
+  margin-bottom: 15px;
+}
+
+mat-form-field.ng-invalid.ng-touched, mat-radio-group.ng-invalid.ng-touched {
   animation: margError;
   animation-duration: 0.3s;
   margin-bottom: 13px;

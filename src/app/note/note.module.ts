@@ -12,6 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { NoteInfoComponent } from './note-info/note-info.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { NoteAddEditComponent } from './note-add-edit/note-add-edit.component';
 
 
 
@@ -21,6 +22,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     NoteListPageComponent,
     DeleteConfirmationComponent,
     NoteInfoComponent,
+    NoteAddEditComponent
   ],
   imports: [
     MatFormFieldModule,

@@ -1,0 +1,31 @@
+<mat-card *ngIf="note" fxFlex="40%" fxFlex.xs="95%">
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+            <h2>{{title}}</h2>
+            <alert id="formNote"></alert>
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Name" formControlName="name" [(ngModel)]="note.name">
+                <mat-error>
+                    {{nameErrorMessage}}
+                  </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <textarea matInput rows="8" placeholder="Enter content" formControlName="content" [(ngModel)]="note.body"></textarea>
+                <mat-error>
+                    {{contentErrorMessage}}
+                  </mat-error>
+            </mat-form-field>
+
+                <mat-radio-group aria-label="Select an option" formControlName="access" [(ngModel)]="note.access">
+                    <mat-radio-button value="private">Private</mat-radio-button>
+                    <mat-radio-button value="public">Public</mat-radio-button>
+                </mat-radio-group>
+
+        
+          <button type="submit" mat-raised-button color="primary"> {{modeEdit ? "Update" : "Create"}} </button>
+          <button type="button" mat-raised-button class="cancel-button" routerLink="/note/list">Cancel</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
