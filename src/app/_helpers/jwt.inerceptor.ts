@@ -2,20 +2,20 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/c
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
+import { CookieStorageService } from ".";
 import { AuthService } from "../_services";
 
 @Injectable({providedIn: 'root'})
 export class JwtInterceptor implements HttpInterceptor {
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService,
+        private cookie: CookieStorageService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-        const account = this.authService.accountValue;
-        const isLoggedIn = account && account.token;
+        const token = this.cookie.getToken();
         const isApiUrl = request.url.startsWith(environment.serverUrl);
-        if (isLoggedIn && isApiUrl) {
+        if (token && isApiUrl) {
             request = request.clone({
-                setHeaders: { Authorization: `Bearer ${account.token}` }
+                setHeaders: { Authorization: `Bearer ${token}` }
             });
         }
 

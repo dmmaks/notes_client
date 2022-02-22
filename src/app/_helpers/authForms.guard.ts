@@ -23,7 +23,7 @@ export class AuthFormsGuard implements CanActivate{
                 this.authService.logout();
                 return true;
             }
-            this.router.navigate(['/profile']);
+            this.router.navigate(['/note/list']);
             return false;
         }
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import { Note } from '../_models';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 const baseUrl = `${environment.serverUrl}/note`;
 
@@ -16,7 +17,10 @@ export class NoteService {
   }
 
   getNotes(): Observable<Note[]> {
-    return this.http.get<Note[]>(`${baseUrl}`);
+    //return this.http.get<Note[]>(`${baseUrl}`);
+    return of([{uuid: '1', name: 'name1', body: 'body1', access: 'public'}, 
+    {uuid: '2', name: 'name2', body: 'body2', access: 'public'}, 
+    {uuid: '3', name: 'name3', body: 'body3', access: 'private'}]);
   }
 
   getNoteById(id: string): Observable<Note> {
@@ -24,7 +28,8 @@ export class NoteService {
   }
 
   getSharedNote(id: string): Observable<Note> {
-    return this.http.get<Note>(`${baseUrl}/share/${id}`);
+    //return this.http.get<Note>(`${baseUrl}/share/${id}`);
+    return of({uuid: '1', name: 'name1', body: 'body1', access: 'public'});
   }
 
   deleteNote(id: string) : Observable<Object> {

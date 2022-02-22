@@ -1,0 +1,52 @@
+
+<mat-card>
+  <mat-card-content>
+    Count of my notes: {{pageContent.length}}
+  </mat-card-content>
+</mat-card>
+<div class="table-container" *ngIf="pageContent">
+  <mat-table id="table" [dataSource]="pageContent" #table class="mat-cell">  
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell class="content-text note-name" *matCellDef="let item" routerLink="share/{{item.uuid}}">{{item.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="content">
+      <mat-header-cell *matHeaderCellDef>Content</mat-header-cell>
+      <mat-cell class="content-text" *matCellDef="let item">{{ (item.body.length>40)? (item.body | slice:0:40)+'...':(item.body) }}</mat-cell>
+    </ng-container>    
+    
+    <ng-container matColumnDef="access">
+      <mat-header-cell *matHeaderCellDef>Access</mat-header-cell>
+      <mat-cell class="content-text" *matCellDef="let item">{{item.access}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" routerLink="./add">
+          <mat-icon 
+          matTooltip="Create a note">add</mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let item" >
+        <button mat-icon-button color="accent" [routerLink]="['edit', item.uuid]">
+          <mat-icon aria-label="Edit"
+          matTooltip="Edit this note">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="accent">
+            <mat-icon (click)="confirmDelete(item.uuid)"
+            matTooltip="Delete this note">delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent">
+          <mat-icon [cdkCopyToClipboard]="copyNoteLink(item.uuid)"
+          matTooltip="Copy link to this note">link</mat-icon>
+      </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let item; columns: columnsToDisplay"></mat-row>
+  </mat-table>
+</div>
+

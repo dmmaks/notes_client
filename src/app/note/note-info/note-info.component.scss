@@ -1,11 +1,13 @@
 @import '../layout/layout.component.scss';
 
+div {
+  font-size: 20px;
+  font-family: Tahoma, Verdana;
+}
 
-.dish-img {
-  display: block;
-  margin: 10px auto 20px;
-  max-height: 30%;
-  max-width: 80%
+.body {
+  text-align: justify;
+  padding: 10px;
 }
 
 .mat-card-content {
@@ -49,7 +51,7 @@ td.mat-cell:last-of-type {
   padding: 5px;
 }
 
-.dish-not-found {
+.note-not-found {
   font-size: 40px;
   font-family: "Helvetica Neue", sans-serif;
 }

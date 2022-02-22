@@ -5,7 +5,6 @@
 
 .mat-cell{
   font-size: 20px;
-  padding: 7px;
 }
 
 .table-container{
@@ -54,29 +53,17 @@ table{
   }
 }
 
-.withActions {
+.table-container {
   @include mat-table-columns((
-  image: (width: 20%),
-  name: (width: 12%),
-  category: (width: 18%),
-  type: (width: 10%),
-  description: (width: 25%),
-  actions: (width: 15%),
-  ));
-}
-
-.withoutActions {
-  @include mat-table-columns((
-  image: (width: 25%),
-  name: (width: 14%),
-  category: (width: 18%),
-  type: (width: 14%),
-  description: (width: 29%)
+  name: (width: 28%),
+  content: (width: 29%),
+  access: (width: 28%),
+  actions: (width: 10%),
   ));
 }
 
 
-.mat-form-field, .mat-checkbox {
+.mat-form-field, .mat-checkbox, .mat-card-content {
   font-size: 20px;
   margin-top: 5px;
 
@@ -84,7 +71,7 @@ table{
 }
 
 
-.dish-name:hover, .dish-img:hover {
+.note-name:hover {
   cursor: pointer;
 }
 
