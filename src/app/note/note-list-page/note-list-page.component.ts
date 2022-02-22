@@ -1,23 +1,17 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {PageEvent} from "@angular/material/paginator";
 import {Observable, ReplaySubject} from "rxjs";
 import {AlertService, AuthService} from "../../_services";
 import {map, startWith, takeUntil} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
-import { MatChipInputEvent } from '@angular/material/chips';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-import { Sort, SortDirection } from '@angular/material/sort';
 import { Note } from 'src/app/_models';
 import { NoteService } from 'src/app/_services/note.service';
 import { environment } from 'src/environments/environment';
 
 
 @Component({
-  selector: 'app-dish-list-page',
+  selector: 'app-note-list-page',
   templateUrl: './note-list-page.component.html',
   styleUrls: ['./note-list-page.component.scss']
 })

@@ -8,7 +8,7 @@ const noteModule = () => import('./note/note.module').then(x => x.NoteModule);
 const routes: Routes = [
   { path: 'account', loadChildren: accountModule, canActivate: [AuthFormsGuard] },
   { path: 'note', loadChildren: noteModule, /*canActivate: [AuthGuard]*/ },
-  //{ path: '**', redirectTo: '/account/login', pathMatch: 'full' }
+  { path: '**', redirectTo: '/account/login', pathMatch: 'full' }
 ];
 
 @NgModule({

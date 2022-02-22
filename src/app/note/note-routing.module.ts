@@ -8,7 +8,8 @@ import { NoteInfoComponent } from './note-info/note-info.component';
 const routes: Routes = [{
   path: '', component: LayoutComponent,
   children:[
-     {path:'', component: NoteListPageComponent},
+     { path: '', redirectTo: 'list', pathMatch: 'full' },
+     {path:'list', component: NoteListPageComponent},
      //{path: 'add', component: DishAddEditComponent},
      {path:'share/:id', component: NoteInfoComponent},
     //{ path: 'edit/:id', component: DishAddEditComponent }
