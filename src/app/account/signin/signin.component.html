@@ -1,0 +1,23 @@
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Log In</h2>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error>
+            Please provide a valid username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input" >
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" onkeypress="return event.charCode != 32" formControlName="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            <mat-error>
+                Enter a valid password, please
+            </mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary">Login</button>
+      </form>
+      <div class="text-center">
+        <a routerLink="../register" class="btn btn-link pr-0">Create account</a>
+    </div>
