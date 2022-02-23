@@ -47,7 +47,7 @@ onSubmit() {
             .pipe(takeUntil(this.destroy))
             .subscribe({
                 next: next => {
-                  this.cookie.setToken(next.tokenValue);
+                  this.cookie.setToken(next.token);
                   this.router.navigateByUrl('/note/list');
               },
                 error: error => {

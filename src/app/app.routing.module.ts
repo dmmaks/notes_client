@@ -6,7 +6,7 @@ const accountModule = () => import('./account/account.module').then(x => x.Accou
 const noteModule = () => import('./note/note.module').then(x => x.NoteModule);
 
 const routes: Routes = [
-  { path: 'account', loadChildren: accountModule, canActivate: [AuthFormsGuard] },
+  { path: 'account', loadChildren: accountModule, /*canActivate: [AuthFormsGuard]*/ },
   { path: 'note', loadChildren: noteModule, /*canActivate: [AuthGuard]*/ },
   { path: '**', redirectTo: '/account/login', pathMatch: 'full' }
 ];

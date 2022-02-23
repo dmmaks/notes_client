@@ -46,13 +46,13 @@ constructor(
 onSubmit(): void {
   this.alertService.clear();
   if (this.form.valid) {
-    const user: User = {username: this.form.value.userName, password: this.form.value.password};
+    const user: User = {name: this.form.value.userName, password: this.form.value.password};
     this.authService.signUp(user)
             .pipe(takeUntil(this.destroy))
             .subscribe({
               next: () => {
                 this.alertService.success('Registration successful', true);
-                this.router.navigate(['../signin'], { relativeTo: this.route });
+                this.router.navigate(['../login'], { relativeTo: this.route });
               },
                 error: error => {
                   switch(error.status){

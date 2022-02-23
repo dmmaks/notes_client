@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -24,8 +24,9 @@ export class AuthService {
   }
 
   signIn(username: string, password: string): Observable<Token> {
-    let reqParams = new HttpParams().set('username', username).set('password', password);
-    return this.http.post<Token>(`${environment.serverUrl}/login`, {}, { withCredentials: true, params: reqParams });
+    const headers = new HttpHeaders().append('name', username).append('password', password);
+    let reqParams = new HttpParams().set('name', username).set('password', password);
+    return this.http.get<Token>(`${environment.serverUrl}/login`,  { withCredentials: true, headers: headers });
   }
 
 logout(): void{

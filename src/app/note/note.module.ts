@@ -13,6 +13,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { NoteInfoComponent } from './note-info/note-info.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { NoteAddEditComponent } from './note-add-edit/note-add-edit.component';
+import { MatButton } from '@angular/material/button';
 
 
 
